@@ -1,0 +1,13 @@
+# data and outputs are not shared (fund website and Yahoo Finance terms do not allow redistribution)
+data/raw/
+data/derived/*
+!data/derived/README.md
+output/
+proposal/
+literature/
+_old/
+__pycache__/
+*.pyc
+.DS_Store
+~$*
+.~lock*
