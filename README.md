@@ -4,7 +4,7 @@ PhD Topic 3 · Minh Huong To · Deakin University · folder structure revised 11
 
 This folder holds the data, code and outputs for the study. Its layout follows the conventions of finance and economics replication packages (AEA Data Editor template; Journal of Finance code-sharing policy): raw data are kept unchanged, every derived dataset and result is produced by code, and one script runs the whole analysis in order.
 
-The GitHub repository (github.com/HuongMinhTo/AustralianSuperFundsRecognitionTiming) holds the code and documentation only. The data and outputs are not shared, because the fund-website and Yahoo Finance terms do not allow redistribution; the APRA files can be downloaded from apra.gov.au.
+The GitHub repository (github.com/HuongMinhTo/AustralianSuperFundsRecognitionTiming) holds the code and documentation only. The data and outputs are not shared, because the fund-website and Bloomberg terms do not allow redistribution; the APRA files can be downloaded from apra.gov.au.
 
 ## Folder structure
 
@@ -21,7 +21,7 @@ PhD_Topic3_Data/
 │   ├── 6_asymmetry/      positive vs negative news
 │   └── utilities/        one-off data-collection helpers (not part of the pipeline)
 ├── data/
-│   ├── raw/              original downloads, never edited: apra/, unit_prices/, proxies/
+│   ├── raw/              original downloads, never edited: apra/, unit_prices/, bloomberg/
 │   └── derived/          datasets built by code/1_build (variables in data/derived/README.md)
 ├── output/               everything produced by the code
 │   ├── estimates/        model objects (.pkl) and option-level estimates
@@ -33,6 +33,7 @@ PhD_Topic3_Data/
 │   ├── asymmetry/        asymmetric recognition results
 │   └── hypothesis_tests/ hypothesis-test summary used in the proposal (computed from output/estimates, not by run_all.sh)
 ├── proposal/             research proposal, current version only (v5 tracked and clean)
+├── docs/                 data report: data used, data missing, Bloomberg list, strengths and limitations
 ├── literature/           key papers
 └── _old/                 superseded files, kept for the record (see _old/README.md)
 ```
@@ -52,7 +53,7 @@ PhD_Topic3_Data/
 | APRA Quarterly Superannuation Fund Statistics June 2026; Annual fund-level statistics back series 2004-2025; Quarterly MySuper statistics | `data/raw/apra/` | apra.gov.au, public; downloaded 28 Sep 2026 | CC BY 4.0 |
 | Fund universe, June 2026 | `data/raw/apra/fund_universe_june2026.csv` | Compiled from APRA lists | - |
 | Unit prices and crediting rates by fund | `data/raw/unit_prices/` | Public fund websites, downloaded 28-30 Sep 2026; source, coverage and caveats for each file in `download_log.csv` | Fund website terms; not for redistribution |
-| ETF proxy prices (daily adjusted closes) | `data/raw/proxies/` | Yahoo Finance | Yahoo terms; not for redistribution |
+| Market index and ASX-listed ETF prices (daily closes, PX_LAST) | `data/raw/bloomberg/` | Bloomberg Terminal, downloaded 20-22 Oct 2026; combined into `data/derived/bloomberg_daily.csv` by `code/9_bloomberg/build_bloomberg_daily.py`; series list in `docs/Bloomberg_data_collection_list.docx` | Bloomberg terms; not for redistribution |
 
 Some raw files are kept but not used by the code (for example closed or discontinued options, the short Prime Super history, the APRA MySuper statistics). They are documented in `download_log.csv` and may be useful later, for example for survivorship checks.
 
